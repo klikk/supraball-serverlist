@@ -133,7 +133,7 @@ $(function () {
     ]
   });
 
-  Autorefresh in every 5 secs
+  //Autorefresh in every 5 secs
 
   window.setInterval(function () {
     serverList.ajax.reload(dataReloaded);
