@@ -229,3 +229,13 @@ div.DTFC_LeftFootWrapper table {
 
 /*Supraball styles*/
 
+.full {
+	background-color:#DD0B1A!important;
+	color:#fff;
+}
+.getting-full {
+	background-color:#F5D970!important;
+}
+.not-empty {
+	background-color:#CEEBAE!important;
+}

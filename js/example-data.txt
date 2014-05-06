@@ -43,7 +43,7 @@
       "max_spectators": 20,
       "max_duration": 20,
       "max_goals": 60,
-      "current_players": 0,
+      "current_players": 10,
       "current_spectators": 0,
       "current_duration": 30516,
       "current_goals_red": 2,

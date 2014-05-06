@@ -69,12 +69,14 @@ $(function () {
   // So after DOM loads setup the Ajax request and the datatable
 
   serverList = $('#server-list').DataTable({
-    order: [[2,"asc"]],
+    order: [
+      [2, "asc"]
+    ],
     ajax: {
       url: "js/example-data.txt",
       dataSrc: "servers"
     },
-    displayLength:100,
+    displayLength: 100,
     columns: [{
       data: 'ip'
     }, {
@@ -103,7 +105,16 @@ $(function () {
       data: 'map'
     }, {
       data: 'training'
-    }]
+    }],
+    createdRow: function ( row, data, index ) {
+      if (data.max_players == data.current_players) {
+        $('td', row).addClass('full');
+      }else if (data.max_players - 2 == data.current_players) {
+        $('td', row).addClass('getting-full');
+      }else if (data.current_players > 0) {
+        $('td', row).addClass('not-empty');
+      }
+    }
   });
 
   // Autorefresh in every 5 secs
