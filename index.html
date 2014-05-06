@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
+	<meta name="viewport" content="initial-scale=1.0, maximum-scale=2.0">
+
+	<title>Supraball Server List</title>
+	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<style type="text/css" class="init">
+
+	body { font-size: 140%; }
+
+	</style>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+	<script type="text/javascript" language="javascript" src="js/jquery.dataTables.min.js"></script>
+	<script type="text/javascript" language="javascript" src="js/dataTables.bootstrap.js"></script>
+	<script type="text/javascript" language="javascript" class="init">
+
+		var url = "http://supraverse.net:8989/";
+
+	    $.ajax({
+	        url: url + "list",
+	        type: "POST",
+	        crossDomain: true,
+	        contentType : 'application/json',
+	        data: "{}",
+	        processData:true,
+	        success: function (result) {
+				data = result;
+				console.log(data);
+	            $('#example').DataTable( {
+				    data: data.servers,
+				    dataSrc: "servers",
+			        columns: [
+				        { data: 'ip' },
+				        { data: 'port' },
+				        { data: 'title' },
+				        { data: 'description' },
+				        { data: 'max_players' },
+				        { data: 'max_spectators' },
+				        { data: 'max_duration' },
+				        { data: 'max_goals' },
+				        { data: 'current_players' },
+				        { data: 'current_duration' },
+				        { data: 'current_goals_red' },
+				        { data: 'current_goals_blue' },
+				        { data: 'map' },
+				        { data: 'training' }
+				    ]
+				} );
+	        },
+	        error: function (xhr, ajaxOptions, thrownError) {
+	            console.log("Error: " ,xhr, ", " ,thrownError);
+	        }
+	    });
+
+	</script>
+</head>
+
+<body class="dt-example">
+	<div class="container">
+		<section>
+			<h1>Supraball Serverlist</h1>
+
+			<div class="info">
+				<p>Styling coming soon...</p>
+			</div>
+
+			<table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+				<thead>
+					<tr>
+						<th>IP</th>
+						<th>Port</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Max Players</th>
+						<th>Max Spectators</th>
+						<th>Max duration</th>
+						<th>Max goals</th>
+						<th>Current players</th>
+						<th>Current duration</th>
+						<th>Goals red</th>
+						<th>Goals blue</th>
+						<th>Map</th>
+						<th>Training</th>
+					</tr>
+				</thead>
+
+				<tfoot>
+					<tr>
+						<th>IP</th>
+						<th>Port</th>
+						<th>Title</th>
+						<th>Description</th>
+						<th>Max Players</th>
+						<th>Max Spectators</th>
+						<th>Max duration</th>
+						<th>Max goals</th>
+						<th>Current players</th>
+						<th>Current duration</th>
+						<th>Goals red</th>
+						<th>Goals blue</th>
+						<th>Map</th>
+						<th>Training</th>
+					</tr>
+				</tfoot>
+
+			</table>
+
+		</section>
+	</div>
+</body>
+</html>
