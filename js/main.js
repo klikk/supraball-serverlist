@@ -69,10 +69,12 @@ $(function () {
   // So after DOM loads setup the Ajax request and the datatable
 
   serverList = $('#server-list').DataTable({
+    order: [[2,"asc"]],
     ajax: {
       url: "js/example-data.txt",
       dataSrc: "servers"
     },
+    displayLength:100,
     columns: [{
       data: 'ip'
     }, {
