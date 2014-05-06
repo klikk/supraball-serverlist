@@ -63,7 +63,6 @@ table.dataTable thead .sorting_asc_disabled { background: url('../images/sort_as
 table.dataTable thead .sorting_desc_disabled { background: url('../images/sort_desc_disabled.png') no-repeat center right; }
 
 table.dataTable thead > tr > th {
-	padding-left: 18px;
 	padding-right: 18px;
 }
 
@@ -229,13 +228,58 @@ div.DTFC_LeftFootWrapper table {
 
 /*Supraball styles*/
 
-.full {
-	background-color:#DD0B1A!important;
-	color:#fff;
+.container-full {
+  margin: 10px auto;
+  padding:0 10px;
+  width: 100%;
 }
-.getting-full {
-	background-color:#F5D970!important;
+
+#server-list {
+	table-layout: fixed;
+	width:100%;
 }
-.not-empty {
-	background-color:#CEEBAE!important;
+
+#server-list td, #server-list th {
+	overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+#server-list tr td:nth-child(1), #server-list tr th:nth-child(1) {
+	width:15%;
+}
+#server-list tr td:nth-child(2), #server-list tr th:nth-child(2) {
+	width:5%;
+}
+#server-list tr td:nth-child(3), #server-list tr th:nth-child(3) {
+	width:20%;
+}
+#server-list tr td:nth-child(4), #server-list tr th:nth-child(4) {
+	width:10%;
+}
+#server-list tr td:nth-child(5), #server-list tr th:nth-child(5) {
+	width:7%;
+}
+#server-list tr td:nth-child(6), #server-list tr th:nth-child(6) {
+	width:7%;
+}
+#server-list tr td:nth-child(7), #server-list tr th:nth-child(7) {
+	width:7%;
+}
+#server-list tr td:nth-child(8), #server-list tr th:nth-child(8) {
+	width:7%;
+}
+#server-list tr td:nth-child(9), #server-list tr th:nth-child(9) {
+	width:7%;
+}
+#server-list tr td:nth-child(10), #server-list tr th:nth-child(10) {
+	width:15%;
+}
+
+#server-list th {
+	vertical-align: middle!important;
+}
+
+.table-responsive {
+	padding-top:50px;
 }

@@ -69,6 +69,7 @@ $(function () {
   // So after DOM loads setup the Ajax request and the datatable
 
   serverList = $('#server-list').DataTable({
+    autoWidth: false,
     order: [
       [2, "asc"]
     ],
@@ -108,19 +109,26 @@ $(function () {
     }],
     createdRow: function ( row, data, index ) {
       if (data.max_players == data.current_players) {
-        $('td', row).addClass('full');
-      }else if (data.max_players - 2 == data.current_players) {
-        $('td', row).addClass('getting-full');
+        $(row).addClass('danger');
+      }else if (data.max_players - 2 <= data.current_players) {
+        $(row).addClass('warning');
       }else if (data.current_players > 0) {
-        $('td', row).addClass('not-empty');
+        $(row).addClass('success');
       }
+    },
+    columnDefs: [
+    {
+      "targets": [13,9,5,7],
+      "visible": false,
+      "searchable": false
     }
+    ]
   });
 
   // Autorefresh in every 5 secs
 
-  window.setInterval(function () {
-    serverList.ajax.reload(dataReloaded);
-  }, 5000);
+  // window.setInterval(function () {
+  //   serverList.ajax.reload(dataReloaded);
+  // }, 8000);
 
 });
