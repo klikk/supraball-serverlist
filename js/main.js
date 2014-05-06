@@ -10,26 +10,26 @@
 //     success: function (result) {
 //     data = result;
 //     console.log(data);
-    // $('#server-list').DataTable( {
-    //   data: data.servers,
-    //   dataSrc: "servers",
-    //     columns: [
-    //       { data: 'ip' },
-    //       { data: 'port' },
-    //       { data: 'title' },
-    //       { data: 'description' },
-    //       { data: 'max_players' },
-    //       { data: 'max_spectators' },
-    //       { data: 'max_duration' },
-    //       { data: 'max_goals' },
-    //       { data: 'current_players' },
-    //       { data: 'current_duration' },
-    //       { data: 'current_goals_red' },
-    //       { data: 'current_goals_blue' },
-    //       { data: 'map' },
-    //       { data: 'training' }
-    //     ]
-    // });
+// $('#server-list').DataTable( {
+//   data: data.servers,
+//   dataSrc: "servers",
+//     columns: [
+//       { data: 'ip' },
+//       { data: 'port' },
+//       { data: 'title' },
+//       { data: 'description' },
+//       { data: 'max_players' },
+//       { data: 'max_spectators' },
+//       { data: 'max_duration' },
+//       { data: 'max_goals' },
+//       { data: 'current_players' },
+//       { data: 'current_duration' },
+//       { data: 'current_goals_red' },
+//       { data: 'current_goals_blue' },
+//       { data: 'map' },
+//       { data: 'training' }
+//     ]
+// });
 //     },
 //     error: function (xhr, ajaxOptions, thrownError) {
 //         console.log("Error: " ,xhr, ", " ,thrownError);
@@ -42,40 +42,71 @@ var serverList;
 
 // Define functions
 
-function dataReloaded(){
-  console.log("data reloaded");
+function dataReloaded() {
+  // Fire a notification that the data has been successfully reloaded
+
+  var successNoty = noty({
+    text: 'Refresh complete!',
+    layout: 'topRight',
+    type: 'success',
+    animation: {
+      open: {
+        height: 'toggle'
+      },
+      close: {
+        height: 'toggle'
+      },
+      easing: 'swing',
+      speed: 300 // opening & closing animation speed
+    },
+    timeout: 1000
+  });
+
 }
 
-$(function(){
+$(function () {
 
   // So after DOM loads setup the Ajax request and the datatable
 
-  serverList = $('#server-list').DataTable( {
+  serverList = $('#server-list').DataTable({
     ajax: {
       url: "js/example-data.txt",
       dataSrc: "servers"
     },
-    columns: [
-      { data: 'ip' },
-      { data: 'port' },
-      { data: 'title' },
-      { data: 'description' },
-      { data: 'max_players' },
-      { data: 'max_spectators' },
-      { data: 'max_duration' },
-      { data: 'max_goals' },
-      { data: 'current_players' },
-      { data: 'current_duration' },
-      { data: 'current_goals_red' },
-      { data: 'current_goals_blue' },
-      { data: 'map' },
-      { data: 'training' }
-    ]
+    columns: [{
+      data: 'ip'
+    }, {
+      data: 'port'
+    }, {
+      data: 'title'
+    }, {
+      data: 'description'
+    }, {
+      data: 'max_players'
+    }, {
+      data: 'max_spectators'
+    }, {
+      data: 'max_duration'
+    }, {
+      data: 'max_goals'
+    }, {
+      data: 'current_players'
+    }, {
+      data: 'current_duration'
+    }, {
+      data: 'current_goals_red'
+    }, {
+      data: 'current_goals_blue'
+    }, {
+      data: 'map'
+    }, {
+      data: 'training'
+    }]
   });
 
   // Autorefresh in every 5 secs
 
-  window.setInterval(function(){
+  window.setInterval(function () {
     serverList.ajax.reload(dataReloaded);
   }, 5000);
 
