@@ -5,19 +5,29 @@
 	<link rel="shortcut icon" type="image/ico" href="favicon.ico">
 
 	<title>Supraball Server List</title>
-	<link rel="stylesheet" type="text/css" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="css/bootstrap.css">
 	<link rel="stylesheet" type="text/css" href="css/style.css">
 
 </head>
 
+<?PHP
+	$file = fopen("http://supraverse.net/max_players.html", "rb");
+	$output = '';
+	while (!feof($file)) {
+	 	$output .= fread($file, 8192);
+	}
+	fclose($file);
+?>
+
 <body>
 	<div class="container-full">
-		<section>
+		<section class="clearfix">
+			<h1 class="pull-left">Supraball Serverlist</h1>
 			<img class="pull-right" src="images/logo.png" alt="Supraball" width="100">
-			<h1>Supraball Serverlist</h1>
 
-			<div class="info">
-				<p>If you want to contribute head over to <a href="https://github.com/klikk/supraball-serverlist">https://github.com/klikk/supraball-serverlist</a></p>
+			<div class="info clearfix">
+				<p class="pull-left">If you want to contribute head over to <a href="https://github.com/klikk/supraball-serverlist">https://github.com/klikk/supraball-serverlist</a></p>
+				<p class="pull-right">Online players: <b class="online-players"></b>&nbsp;| All time players record: <span class="top-players"><?php echo $output ?></span></p>
 			</div>
 
 			<div class="table-responsive">
@@ -28,7 +38,7 @@
 							<th>Port</th>
 							<th>Title</th>
 							<th>Description</th>
-							<th>Max players</th>
+							<th>Players</th>
 							<th>Max spectators</th>
 							<th>Max duration</th>
 							<th>Max goals</th>

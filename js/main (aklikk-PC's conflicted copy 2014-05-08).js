@@ -38,7 +38,7 @@ function calculateOnlinePlayers(){
 // Define variables
 
 var serverList;
-var url = "http://supraverse.net:8990/list";
+var url = "http://supraverse.net:8989/list";
 var data;
 var sumPlayers = 0;
 
