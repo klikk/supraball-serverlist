@@ -65,7 +65,7 @@ $(function () {
       type: "POST",
       crossDomain: true,
       contentType : 'application/json',
-      data: "{}",
+      data: JSON.stringify({ ver :"" }),
       processData:true,
       success: function (result) {
         launchTable(result);
