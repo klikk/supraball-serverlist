@@ -85,11 +85,10 @@ $(function () {
       serverList = $('#server-list').DataTable({
         data: result.servers,
         autoWidth: false,
-        lengthMenu: [ [100, -1], [100, "All"] ],
+        lengthMenu: [ [-1, 100], ["All", 100] ],
         order: [
           [8, "desc"]
         ],
-        displayLength: 100,
         columns: [{
           data: 'ip'
         }, {
